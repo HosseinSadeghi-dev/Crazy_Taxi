@@ -11,9 +11,10 @@ class Game:
     height = 900
     width = 500
     background = pygame.transform.scale(pygame.image.load('assets/Images/road.png'), (width, height))
-    sound = pygame.mixer.Sound('assets/Sounds/chase.mp3')
     bg1_position = 0
     bg2_position = -background.get_height()
+    bg_speed = 10
+    sound = pygame.mixer.Sound('assets/Sounds/chase.mp3')
     screen = pygame.display.set_mode((width, height))
     pygame.display.set_caption('Crazy Taxi')
     clock = pygame.time.Clock()
@@ -32,8 +33,8 @@ class Game:
 
         while True:
 
-            Game.bg1_position += 10
-            Game.bg2_position += 10
+            Game.bg1_position += Game.bg_speed
+            Game.bg2_position += Game.bg_speed
 
             if Game.bg1_position > Game.background.get_height():
                 Game.bg1_position = -Game.background.get_height()
